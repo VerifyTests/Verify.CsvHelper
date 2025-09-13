@@ -37,4 +37,16 @@ public class Samples
     }
 
     #endregion
+    static CsvConfiguration config = new(CultureInfo.InvariantCulture)
+    {
+        NewLine = "\n"
+    };
+
+    [Test]
+    public Task VerifyReader()
+    {
+        using var reader = File.OpenText("sample.csv");
+        using var csvReader = new CsvReader(reader, config);
+        return Verify(csvReader);
+    }
 }

@@ -92,15 +92,15 @@ Results in:
 <a id='snippet-Samples.IgnoreColumns.verified.csv'></a>
 ```csv
 Index,First Name,Last Name,Company,City,Country,Phone,Dob
-1,Sheryl,Baxter,Rasmussen Group,East Leonard,Chile,229.077.5154,1/02/2025
-2,Preston,Lozano,Vega-Gentry,East Jimmychester,Djibouti,5153435776,2/02/2025
-3,Roy,Berry,Murillo-Perry,Isabelborough,Antigua and Barbuda,-1199,3/02/2025
-4,Linda,Olsen,"Dominguez, Mcmillan and Donovan",Bensonview,Dominican Republic,001-808-617-6467,4/02/2025
-5,Joanna,Bender,"Martin, Lang and Andrade",West Priscilla,Slovakia (Slovak Republic),001-234-203-0635,5/02/2025
-6,Aimee,Downs,Steele Group,Chavezborough,Bosnia and Herzegovina,(283)437-3886,6/02/2025
-7,Darren,Peck,"Lester, Woodard and Mitchell",Lake Ana,Pitcairn Islands,(496)452-6181,7/02/2025
-8,Brett,Mullen,"Sanford, Davenport and Giles",Kimport,Bulgaria,001-583-352-7197,8/02/2025
-9,Sheryl,Meyers,Browning-Simon,Robersonstad,Cyprus,854-138-4911,9/02/2025
+1,Sheryl,Baxter,Rasmussen Group,East Leonard,Chile,229.077.5154,Date_1
+2,Preston,Lozano,Vega-Gentry,East Jimmychester,Djibouti,5153435776,Date_2
+3,Roy,Berry,Murillo-Perry,Isabelborough,Antigua and Barbuda,-1199,Date_3
+4,Linda,Olsen,"Dominguez, Mcmillan and Donovan",Bensonview,Dominican Republic,001-808-617-6467,Date_4
+5,Joanna,Bender,"Martin, Lang and Andrade",West Priscilla,Slovakia (Slovak Republic),001-234-203-0635,Date_5
+6,Aimee,Downs,Steele Group,Chavezborough,Bosnia and Herzegovina,(283)437-3886,Date_6
+7,Darren,Peck,"Lester, Woodard and Mitchell",Lake Ana,Pitcairn Islands,(496)452-6181,Date_7
+8,Brett,Mullen,"Sanford, Davenport and Giles",Kimport,Bulgaria,001-583-352-7197,Date_8
+9,Sheryl,Meyers,Browning-Simon,Robersonstad,Cyprus,854-138-4911,Date_9
 ```
 <sup><a href='/src/Tests/Samples.IgnoreColumns.verified.csv#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.IgnoreColumns.verified.csv' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -127,15 +127,15 @@ Results in:
 <a id='snippet-Samples.ScrubCsvColumns.verified.csv'></a>
 ```csv
 Index,Customer Id,First Name,Last Name,Company,City,Country,Phone,Dob
-1,{Scrubbed},Sheryl,Baxter,Rasmussen Group,East Leonard,Chile,229.077.5154,1/02/2025
-2,{Scrubbed},Preston,Lozano,Vega-Gentry,East Jimmychester,Djibouti,5153435776,2/02/2025
-3,{Scrubbed},Roy,Berry,Murillo-Perry,Isabelborough,Antigua and Barbuda,-1199,3/02/2025
-4,{Scrubbed},Linda,Olsen,"Dominguez, Mcmillan and Donovan",Bensonview,Dominican Republic,001-808-617-6467,4/02/2025
-5,{Scrubbed},Joanna,Bender,"Martin, Lang and Andrade",West Priscilla,Slovakia (Slovak Republic),001-234-203-0635,5/02/2025
-6,{Scrubbed},Aimee,Downs,Steele Group,Chavezborough,Bosnia and Herzegovina,(283)437-3886,6/02/2025
-7,{Scrubbed},Darren,Peck,"Lester, Woodard and Mitchell",Lake Ana,Pitcairn Islands,(496)452-6181,7/02/2025
-8,{Scrubbed},Brett,Mullen,"Sanford, Davenport and Giles",Kimport,Bulgaria,001-583-352-7197,8/02/2025
-9,{Scrubbed},Sheryl,Meyers,Browning-Simon,Robersonstad,Cyprus,854-138-4911,9/02/2025
+1,{Scrubbed},Sheryl,Baxter,Rasmussen Group,East Leonard,Chile,229.077.5154,Date_1
+2,{Scrubbed},Preston,Lozano,Vega-Gentry,East Jimmychester,Djibouti,5153435776,Date_2
+3,{Scrubbed},Roy,Berry,Murillo-Perry,Isabelborough,Antigua and Barbuda,-1199,Date_3
+4,{Scrubbed},Linda,Olsen,"Dominguez, Mcmillan and Donovan",Bensonview,Dominican Republic,001-808-617-6467,Date_4
+5,{Scrubbed},Joanna,Bender,"Martin, Lang and Andrade",West Priscilla,Slovakia (Slovak Republic),001-234-203-0635,Date_5
+6,{Scrubbed},Aimee,Downs,Steele Group,Chavezborough,Bosnia and Herzegovina,(283)437-3886,Date_6
+7,{Scrubbed},Darren,Peck,"Lester, Woodard and Mitchell",Lake Ana,Pitcairn Islands,(496)452-6181,Date_7
+8,{Scrubbed},Brett,Mullen,"Sanford, Davenport and Giles",Kimport,Bulgaria,001-583-352-7197,Date_8
+9,{Scrubbed},Sheryl,Meyers,Browning-Simon,Robersonstad,Cyprus,854-138-4911,Date_9
 ```
 <sup><a href='/src/Tests/Samples.ScrubCsvColumns.verified.csv#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ScrubCsvColumns.verified.csv' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->

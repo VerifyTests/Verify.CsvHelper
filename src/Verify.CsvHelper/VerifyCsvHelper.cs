@@ -20,6 +20,14 @@ public static partial class VerifyCsvHelper
 
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         VerifierSettings.AddScrubber("csv", Handle);
+        VerifierSettings.RegisterFileConverter<CsvReader>(ConvertReader);
+    }
+
+    static ConversionResult ConvertReader(CsvReader target, IReadOnlyDictionary<string, object> context)
+    {
+        var builder = new StringBuilder();
+        Handle(builder, Counter.Current, context, target);
+        return new(null, "csv", builder);
     }
 
     static void Handle(StringBuilder builder, Counter counter, IReadOnlyDictionary<string, object> context)
@@ -27,10 +35,15 @@ public static partial class VerifyCsvHelper
         using var reader = new StringReader(builder.ToString());
         using var csvReader = new CsvReader(reader, config);
         builder.Clear();
+        Handle(builder, counter, context, csvReader);
+    }
+
+    static void Handle(StringBuilder builder, Counter counter, IReadOnlyDictionary<string, object> context, CsvReader csvReader)
+    {
         using var writer = new StringWriter(builder);
         using var csvWriter = new CsvWriter(writer, config);
         csvReader.Read();
-        var columns = GetColumns(csvReader, context).ToList();
+        var columns = GetColumns(csvReader, context, counter).ToList();
 
         foreach (var header in columns)
         {
@@ -50,7 +63,10 @@ public static partial class VerifyCsvHelper
         }
     }
 
-    static IEnumerable<(string column, Func<string?, string?> translate)> GetColumns(CsvReader reader, IReadOnlyDictionary<string, object> context)
+    static IEnumerable<(string column, Func<string?, string?> translate)> GetColumns(
+        CsvReader reader,
+        IReadOnlyDictionary<string, object> context,
+        Counter counter)
     {
         reader.ReadHeader();
         var translateBuilder = GetTranslate(context);
@@ -62,7 +78,7 @@ public static partial class VerifyCsvHelper
 
         foreach (var column in columns.Except(ignoreColumns))
         {
-            var handle = GetHandle(scrubColumns, column, translateBuilder);
+            var handle = GetHandle(scrubColumns, column, translateBuilder, counter);
 
             yield return (column, handle);
         }
@@ -70,9 +86,11 @@ public static partial class VerifyCsvHelper
 
     static Func<string?, string?> translateScrubbed = _ => "{Scrubbed}";
 
-    static Func<string?, string?> defaultHandle = _ => _;
-
-    static Func<string?, string?> GetHandle(string[] scrubColumns, string column, Func<string, Func<string?, string?>?>? translateBuilder)
+    static Func<string?, string?> GetHandle(
+        string[] scrubColumns,
+        string column,
+        Func<string, Func<string?, string?>?>? translateBuilder,
+        Counter counter)
     {
         if (scrubColumns.Contains(column))
         {
@@ -82,7 +100,15 @@ public static partial class VerifyCsvHelper
         var translate = translateBuilder?.Invoke(column);
         if (translate == null)
         {
-            return defaultHandle;
+            return _ =>
+            {
+                if (counter.TryConvert(_, out var result))
+                {
+                    return result;
+                }
+
+                return _;
+            };
         }
 
         return _ => translate(_) ?? "null";
