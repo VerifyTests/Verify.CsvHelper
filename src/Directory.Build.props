@@ -7,7 +7,7 @@
     <LangVersion>preview</LangVersion>
     <SignAssembly>false</SignAssembly>
     <PackageTags>CsvHelper, Verify</PackageTags>
-    <Description>Extends Verify (https://github.com/VerifyTests/Verify) to allow verification of CSV via CsvHelper (https://joshclose.github.io/CsvHelper/).</Description>
+    <Description>Extends Verify (https://github.com/VerifyTests/Verify) to allow verification of CSVs via CsvHelper (https://joshclose.github.io/CsvHelper/).</Description>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>

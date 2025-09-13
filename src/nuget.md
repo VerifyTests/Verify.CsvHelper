@@ -1,6 +1,6 @@
 [Documentation](https://github.com/VerifyTests/Verify.CsvHelper)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to allow verification of CSV via [CsvHelper](https://joshclose.github.io/CsvHelper/).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
+Extends [Verify](https://github.com/VerifyTests/Verify) to allow verification of CSVs via [CsvHelper](https://joshclose.github.io/CsvHelper/).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
 **See [Milestones](https://github.com/VerifyTests/Verify.CsvHelper/milestones?state=closed) for release notes.**
 
