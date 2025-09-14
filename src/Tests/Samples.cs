@@ -43,6 +43,8 @@ public class Samples
         NewLine = "\n"
     };
 
+    #region VerifyReader
+
     [Test]
     public Task VerifyReader()
     {
@@ -50,4 +52,6 @@ public class Samples
         using var csvReader = new CsvReader(reader, config);
         return Verify(csvReader);
     }
+
+    #endregion
 }

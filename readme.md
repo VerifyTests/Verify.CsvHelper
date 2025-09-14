@@ -42,6 +42,26 @@ public static void Initialize() =>
 <!-- endSnippet -->
 
 
+### Sample input
+
+<!-- snippet: sample.csv -->
+<a id='snippet-sample.csv'></a>
+```csv
+Index,Customer Id,First Name,Last Name,Company,City,Country,Phone,Dob
+1,44e0f9d9-e56e-4626-b88f-b29fecb8c584,Sheryl,Baxter,Rasmussen Group,East Leonard,Chile,229.077.5154,1/02/2025
+2,e58dd853-3aa0-4360-9dd1-86be558a1ad8,Preston,Lozano,Vega-Gentry,East Jimmychester,Djibouti,5153435776,2/02/2025
+3,0de1d6ab-f7ad-455c-822e-fbe6e9b7e40a,Roy,Berry,Murillo-Perry,Isabelborough,Antigua and Barbuda,-1199,3/02/2025
+4,c26c7ead-2f50-44a4-bba6-2dde0228f280,Linda,Olsen,Mcmillan and Donovan,Bensonview,Dominican Republic,001-808-617-6467,4/02/2025
+5,e5f7febf-bedf-4f77-924d-472f30897928,Joanna,Bender,Lang and Andrade,West Priscilla,Slovakia,001-234-203-0635,5/02/2025
+6,355a51db-8b9d-4210-bf50-b4a733080985,Aimee,Downs,Steele Group,Chavezborough,Bosnia and Herzegovina,(283)437-3886,6/02/2025
+7,b9d9dc41-9fc3-49d8-a418-36229ceeba0f,Darren,Peck,Woodard and Mitchell,Lake Ana,Pitcairn Islands,(496)452-6181,7/02/2025
+8,f7b4f884-0d6a-4ddb-b3ac-4235b06bf390,Brett,Mullen,Davenport and Giles,Kimport,Bulgaria,001-583-352-7197,8/02/2025
+9,e2aafdb2-fb28-433a-96ad-cacac4f0daf4,Sheryl,Meyers,Browning-Simon,Robersonstad,Cyprus,854-138-4911,9/02/2025
+```
+<sup><a href='/src/Tests/sample.csv#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample.csv' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
 ### Verify a file
 
 <!-- snippet: VerifyCsv -->
@@ -141,9 +161,21 @@ Index,Customer Id,First Name,Last Name,Company,City,Country,Phone,Dob
 <!-- endSnippet -->
 
 
-### Result
+### Verify a CsvReader
 
-[Samples.VerifyCsv#01.verified.png](/src/Tests/Samples.VerifyCsv%2300.verified.csv):
+<!-- snippet: VerifyReader -->
+<a id='snippet-VerifyReader'></a>
+```cs
+[Test]
+public Task VerifyReader()
+{
+    using var reader = File.OpenText("sample.csv");
+    using var csvReader = new CsvReader(reader, config);
+    return Verify(csvReader);
+}
+```
+<sup><a href='/src/Tests/Samples.cs#L46-L56' title='Snippet source file'>snippet source</a> | <a href='#snippet-VerifyReader' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 
 ## Icon
