@@ -74,6 +74,12 @@ public Task VerifyCsv() =>
 <sup><a href='/src/Tests/Samples.cs#L4-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-VerifyCsv' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
+Results in:
+
+snippet: Samples.VerifyCsv.verified.csv
+
+Note that Guid and date scrubbing is respected.
+
 
 ### Verify a Stream
 
