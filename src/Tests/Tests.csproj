@@ -10,6 +10,11 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Verify.DiffPlex" />
     <PackageReference Include="Verify.NUnit" />
+    <PackageReference Include="Argon" />
+    <PackageReference Include="DiffEngine" />
+    <PackageReference Include="EmptyFiles" />
+    <PackageReference Include="SimpleInfoName" />
+    <PackageReference Include="Verify" />
     <ProjectReference Include="..\Verify.CsvHelper\Verify.CsvHelper.csproj" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
 
