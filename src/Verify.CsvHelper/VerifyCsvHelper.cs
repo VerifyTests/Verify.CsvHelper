@@ -97,6 +97,14 @@ public static partial class VerifyCsvHelper
             return translateScrubbed;
         }
 
+        return GetTranslateHandle(column, translateBuilder, counter);
+    }
+
+    static Func<string?, string?> GetTranslateHandle(
+        string column,
+        Func<string, Func<string?, string?>?>? translateBuilder,
+        Counter counter)
+    {
         var translate = translateBuilder?.Invoke(column);
         if (translate == null)
         {
