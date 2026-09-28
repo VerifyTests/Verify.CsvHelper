@@ -9,6 +9,12 @@
     #endregion
 
     [ModuleInitializer]
-    public static void InitializeOther() =>
+    public static void InitializeOther()
+    {
+        // Date scrubbing depends on the current culture's date format
+        var culture = CultureInfo.GetCultureInfo("en-US");
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.CurrentCulture = culture;
         VerifyDiffPlex.Initialize();
+    }
 }
