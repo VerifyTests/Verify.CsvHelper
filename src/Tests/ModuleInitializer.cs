@@ -15,6 +15,5 @@
         var culture = CultureInfo.GetCultureInfo("en-US");
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.CurrentCulture = culture;
-        VerifyDiffPlex.Initialize();
     }
 }
