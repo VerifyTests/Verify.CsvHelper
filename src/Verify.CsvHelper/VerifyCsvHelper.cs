@@ -4,7 +4,7 @@ public static partial class VerifyCsvHelper
 {
     public static bool Initialized { get; private set; }
 
-    static CsvConfiguration config = new(CultureInfo.InvariantCulture)
+    static CsvWriterOptions writerOptions = new()
     {
         NewLine = "\n"
     };
@@ -33,7 +33,7 @@ public static partial class VerifyCsvHelper
     static void Handle(StringBuilder builder, Counter counter, IReadOnlyDictionary<string, object> context)
     {
         using var reader = new StringReader(builder.ToString());
-        using var csvReader = new CsvReader(reader, config);
+        using var csvReader = CsvReader.Create(reader);
         builder.Clear();
         Handle(builder, counter, context, csvReader);
     }
@@ -41,8 +41,7 @@ public static partial class VerifyCsvHelper
     static void Handle(StringBuilder builder, Counter counter, IReadOnlyDictionary<string, object> context, CsvReader csvReader)
     {
         using var writer = new StringWriter(builder);
-        using var csvWriter = new CsvWriter(writer, config);
-        csvReader.Read();
+        using var csvWriter = CsvWriter.Create(writer, writerOptions);
         var columns = GetColumns(csvReader, context, counter).ToList();
 
         foreach (var header in columns)
@@ -50,16 +49,16 @@ public static partial class VerifyCsvHelper
             csvWriter.WriteField(header.column);
         }
 
-        csvWriter.NextRecord();
+        csvWriter.EndRecord();
         while (csvReader.Read())
         {
             foreach (var (column, translate) in columns)
             {
-                var sourceCell = csvReader.GetField(column);
+                var sourceCell = csvReader.GetString(column);
                 csvWriter.WriteField(translate(sourceCell));
             }
 
-            csvWriter.NextRecord();
+            csvWriter.EndRecord();
         }
     }
 
@@ -74,7 +73,7 @@ public static partial class VerifyCsvHelper
         var ignoreColumns = context.GetIgnoreCsvColumns();
         var scrubColumns = context.GetScrubCsvColumns();
 
-        var columns = reader.HeaderRecord!;
+        var columns = reader.Headers;
 
         foreach (var column in columns.Except(ignoreColumns))
         {

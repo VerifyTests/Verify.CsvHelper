@@ -195,11 +195,11 @@ Index,Customer Id,First Name,Last Name,Company,City,Country,Phone,Dob
 public Task VerifyReader()
 {
     using var reader = File.OpenText("sample.csv");
-    using var csvReader = new CsvReader(reader, config);
+    using var csvReader = CsvReader.Create(reader);
     return Verify(csvReader);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L45-L55' title='Snippet source file'>snippet source</a> | <a href='#snippet-VerifyReader' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L40-L50' title='Snippet source file'>snippet source</a> | <a href='#snippet-VerifyReader' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
